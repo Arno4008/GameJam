@@ -46,7 +46,7 @@ public class PlayerController2 : MonoBehaviour
         {
             AttackTimer += Time.deltaTime;
         }
-        if (Input.GetButtonDown("Fire1." + joystickNumber) && AttackTimer >= AttackCooldown && Attack == true))
+        if (Input.GetButtonDown("Fire1." + joystickNumber) && AttackTimer >= AttackCooldown && Attack == true)
         {
             Debug.Log("Attack 2eme perso");
             playerController.health -= damage;
