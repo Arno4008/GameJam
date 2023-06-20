@@ -15,10 +15,25 @@ public class PlayerController1 : MonoBehaviour
     public int UltiXp_Need;
     public int health;
     public int damage;
+    private bool Attack;
     private void Start()
     {
         SetMaxValueUlti(UltiXp_Need, UltiXp_Current);
         SetMaxValueHP(health, health);
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            Attack = true;
+        }
+    }
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            Attack = false;
+        }
     }
     void Update()
     {
@@ -31,7 +46,7 @@ public class PlayerController1 : MonoBehaviour
         {
             AttackTimer += Time.deltaTime;
         }
-        if (Input.GetButtonDown("Fire1." + joystickNumber) && AttackTimer >= AttackCooldown)
+        if (Input.GetButtonDown("Fire1." + joystickNumber) && AttackTimer >= AttackCooldown && Attack == true)
         {
             Debug.Log("Attack 1er perso");
             playerController.health -= damage;
