@@ -957,8 +957,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -2153021409551774732, guid: 86c616cab75a8a344b96d3422f216fe0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: -2153021409551774732, guid: 86c616cab75a8a344b96d3422f216fe0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: -2153021409551774732, guid: 86c616cab75a8a344b96d3422f216fe0, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5379439
+      objectReference: {fileID: 0}
+    - target: {fileID: -2153021409551774732, guid: 86c616cab75a8a344b96d3422f216fe0, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: -2153021409551774732, guid: 86c616cab75a8a344b96d3422f216fe0, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 86c616cab75a8a344b96d3422f216fe0, type: 3}
       propertyPath: m_Name

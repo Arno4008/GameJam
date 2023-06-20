@@ -40,7 +40,8 @@ public class PlayerController2 : MonoBehaviour
         SetValueHP(health);
         SetValueUlti(UltiXp_Current);
         float moveHorizontal = Input.GetAxis("Horizontal2");
-        Vector3 movement = new Vector3(moveHorizontal, 0.0f, 0.0f);
+        float moveVertical = Input.GetAxis("Vertical2");
+        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
         transform.Translate(movement * speed * Time.deltaTime);
         if (manager.inFight)
         {
@@ -48,13 +49,11 @@ public class PlayerController2 : MonoBehaviour
         }
         if (Input.GetButtonDown("Fire1." + joystickNumber) && AttackTimer >= AttackCooldown && Attack == true)
         {
-            Debug.Log("Attack 2eme perso");
             playerController.health -= damage;
             UltiXp_Current += 5;
         }
         if (Input.GetButtonDown("LB" + joystickNumber) && UltiXp_Current >= UltiXp_Need)
         {
-            Debug.Log("Ulti 2eme perso");
             playerController.health -= damage * 2;
             UltiXp_Current = 0;
         }
