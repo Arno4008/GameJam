@@ -59,6 +59,7 @@ public class PlayerController1 : MonoBehaviour
         }
         if (health <= 0)
         {
+            manager.End(1);
             Destroy(gameObject, 0.1f);
         }
     }
