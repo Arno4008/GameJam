@@ -8,10 +8,12 @@ public class GameManager : MonoBehaviour
     public PlayerController2 playercontroller2;
     public bool inFight;
     public GameObject Fight;
+    public GameObject Option;
     public GameObject UI;
     public GameObject CharacterSelection;
     string[] joystickNames;
     private int b;
+    public bool Walls;
 
     void Start()
     {
@@ -31,6 +33,10 @@ public class GameManager : MonoBehaviour
         Fight.SetActive(false);
         UI.SetActive(false);
     }
+    private void Update()
+    {
+        Walls = player1.Walls;
+    }
     public void End(int i)
     {
         if (i == 1)
@@ -45,8 +51,6 @@ public class GameManager : MonoBehaviour
     public void StartFight(int i)
     {
         b += i;
-        Debug.Log("B= " + b + "I= " + i);
-        Debug.Log("JoystickNames Lenght= " + joystickNames.Length);
         if (b >= joystickNames.Length)
         {
             CharacterSelection.SetActive(false);
