@@ -16,6 +16,7 @@ public class PlayerController1 : MonoBehaviour
     public int health;
     public int damage;
     private bool Attack;
+    public bool option;
     private void Start()
     {
         SetMaxValueUlti(UltiXp_Need, UltiXp_Current);
@@ -37,22 +38,32 @@ public class PlayerController1 : MonoBehaviour
     }
     void Update()
     {
+        float moveVertical;
         SetValueHP(health);
         SetValueUlti(UltiXp_Current);
         float moveHorizontal = Input.GetAxis("Horizontal1");
-        float moveVertical = Input.GetAxis("Vertical1");
+        if (!manager.Walls)
+        {
+            moveVertical = Input.GetAxis("Vertical1");
+        } else
+        {
+            moveVertical = 0.0f;
+        }
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
-        transform.Translate(movement * speed * Time.deltaTime);
+        if (option == false)
+        {
+            transform.Translate(movement * speed * Time.deltaTime);
+        }
         if (manager.inFight)
         {
             AttackTimer += Time.deltaTime;
         }
-        if (Input.GetButtonDown("Fire1." + joystickNumber) && AttackTimer >= AttackCooldown && Attack == true)
+        if (Input.GetButtonDown("Fire1." + joystickNumber) && AttackTimer >= AttackCooldown && Attack == true && option == false)
         {
             playerController.health -= damage;
             UltiXp_Current += 5;
         }
-        if (Input.GetButtonDown("LB" + joystickNumber) && UltiXp_Current >= UltiXp_Need)
+        if (Input.GetButtonDown("LB" + joystickNumber) && UltiXp_Current >= UltiXp_Need && option == false)
         {
             playerController.health -= damage * 2;
             UltiXp_Current = 0;
