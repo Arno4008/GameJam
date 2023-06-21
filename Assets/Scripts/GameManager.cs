@@ -8,11 +8,14 @@ public class GameManager : MonoBehaviour
     public PlayerController2 playercontroller2;
     public bool inFight;
     public GameObject Fight;
+    public GameObject UI;
     public GameObject CharacterSelection;
+    string[] joystickNames;
+    private int b;
 
     void Start()
     {
-        string[] joystickNames = Input.GetJoystickNames();
+        joystickNames = Input.GetJoystickNames();
 
         if (joystickNames.Length > 0)
         {
@@ -26,6 +29,7 @@ public class GameManager : MonoBehaviour
             player2.joystickNumber = 2;
         }
         Fight.SetActive(false);
+        UI.SetActive(false);
     }
     public void End(int i)
     {
@@ -38,10 +42,17 @@ public class GameManager : MonoBehaviour
             Debug.Log("Victoire du Joueur 1");
         }
     }
-    public void StartFight()
+    public void StartFight(int i)
     {
-        CharacterSelection.SetActive(false);
-        Fight.SetActive(true);
-        inFight = true;
+        b += i;
+        Debug.Log("B= " + b + "I= " + i);
+        Debug.Log("JoystickNames Lenght= " + joystickNames.Length);
+        if (b >= joystickNames.Length)
+        {
+            CharacterSelection.SetActive(false);
+            Fight.SetActive(true);
+            UI.SetActive(true);
+            inFight = true;
+        }
     }
 }
