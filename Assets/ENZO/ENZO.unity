@@ -712,7 +712,11 @@ MonoBehaviour:
   playercontroller2: {fileID: 837926247}
   inFight: 0
   Fight: {fileID: 187111712}
+<<<<<<< Updated upstream
   UI: {fileID: 1862495213}
+=======
+  UI: {fileID: 0}
+>>>>>>> Stashed changes
   CharacterSelection: {fileID: 255113506}
 --- !u!4 &143545731
 Transform:
@@ -2029,6 +2033,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RACLETTE_LOW
       objectReference: {fileID: 0}
+    - target: {fileID: 6154754851355019314, guid: b1e723a9fb43ef54a998960822507d3d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dcf81ba8ac8e2b449b736567ae2ebf97, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1e723a9fb43ef54a998960822507d3d, type: 3}
 --- !u!1 &568049962 stripped
@@ -2836,11 +2844,15 @@ MonoBehaviour:
   - {fileID: 1185913257}
   - {fileID: 424264707}
   - {fileID: 666251465}
+<<<<<<< Updated upstream
   charactersBack:
   - {fileID: 131806012}
   - {fileID: 363765302}
   - {fileID: 363765302}
   - {fileID: 363765302}
+=======
+  charactersBack: []
+>>>>>>> Stashed changes
   selectedCharacter: 0
   selectedCharacterBack: 0
   SelectedSlots: 0
@@ -5105,11 +5117,15 @@ MonoBehaviour:
   - {fileID: 1591528034}
   - {fileID: 1769112444}
   - {fileID: 1075414201}
+<<<<<<< Updated upstream
   charactersBack:
   - {fileID: 570621603}
   - {fileID: 857522383}
   - {fileID: 857522383}
   - {fileID: 857522383}
+=======
+  charactersBack: []
+>>>>>>> Stashed changes
   selectedCharacter: 0
   selectedCharacterBack: 0
   SelectedSlots: 0
