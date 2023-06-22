@@ -37,7 +37,7 @@ Material:
     m_Floats:
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
-    - _ShadowStep: 28.6
+    - _ShadowStep: 22.75
     m_Colors:
     - _MainColor: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
