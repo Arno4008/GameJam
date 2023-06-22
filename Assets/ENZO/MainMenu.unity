@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -571,8 +571,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player1: {fileID: 0}
+  playercontroller1: {fileID: 0}
   player2: {fileID: 0}
+  playercontroller2: {fileID: 0}
   inFight: 0
+  Fight: {fileID: 0}
+  Option: {fileID: 0}
+  UI: {fileID: 0}
+  CharacterSelection: {fileID: 0}
+  Walls: 0
 --- !u!4 &640486865
 Transform:
   m_ObjectHideFlags: 0
@@ -794,13 +801,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8214ad686b8d80469c9a7536a8fe234, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WallsTXT: {fileID: 0}
+  WallsSelectedTXT: {fileID: 0}
+  SoundTXT: {fileID: 0}
+  SoundSelectedTXT: {fileID: 0}
   characters:
   - {fileID: 1078859201}
   - {fileID: 155824356}
   - {fileID: 2012865266}
   - {fileID: 528801344}
+  Slots: []
+  charactersBack: []
+  OptionsButton: []
+  OptionsButtonSelected: []
+  InvisibleWalls: {fileID: 0}
+  player1: {fileID: 0}
+  player2: {fileID: 0}
   selectedCharacter: 0
+  selectedCharacterBack: 0
+  SelectedSlots: 0
+  SelectedOption: 0
+  SelectedOptionButtonS: 0
   joystickNumber: 1
+  manager: {fileID: 0}
+  isAxisInUse: 0
+  BRefresh: 0
+  option: 0
+  Walls: 0
+  Sound: 0
 --- !u!1 &1078859201
 GameObject:
   m_ObjectHideFlags: 0
@@ -1129,13 +1157,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8214ad686b8d80469c9a7536a8fe234, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WallsTXT: {fileID: 0}
+  WallsSelectedTXT: {fileID: 0}
+  SoundTXT: {fileID: 0}
+  SoundSelectedTXT: {fileID: 0}
   characters:
   - {fileID: 1078859201}
   - {fileID: 155824356}
   - {fileID: 2012865266}
   - {fileID: 528801344}
+  Slots: []
+  charactersBack: []
+  OptionsButton: []
+  OptionsButtonSelected: []
+  InvisibleWalls: {fileID: 0}
+  player1: {fileID: 0}
+  player2: {fileID: 0}
   selectedCharacter: 0
+  selectedCharacterBack: 0
+  SelectedSlots: 0
+  SelectedOption: 0
+  SelectedOptionButtonS: 0
   joystickNumber: 2
+  manager: {fileID: 0}
+  isAxisInUse: 0
+  BRefresh: 0
+  option: 0
+  Walls: 0
+  Sound: 0
 --- !u!1 &1998700598
 GameObject:
   m_ObjectHideFlags: 0
