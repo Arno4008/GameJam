@@ -4,6 +4,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public CharacterSelection1 player1;
+    public AudioSource InMainMenu;
+    public AudioSource InFight;
     public PlayerController1 playercontrollerClovis1;
     public PlayerController1 playercontrollerEnzo1;
     public CharacterSelection2 player2;
@@ -22,6 +24,7 @@ public class GameManager : MonoBehaviour
     string[] joystickNames;
     private int b;
     public bool Walls;
+    public int o;
 
     void Start()
     {
@@ -48,6 +51,16 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
+        if (player1.MainMenu == true)
+        {
+            InFight.Stop();
+            InMainMenu.Play();
+        }
+        if (inFight == true)
+        {
+            InMainMenu.Stop();
+            InFight.Play();
+        }
         Walls = player1.Walls;
     }
     public void End(int i)

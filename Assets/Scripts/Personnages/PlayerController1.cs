@@ -5,7 +5,7 @@ using System.Collections;
 public class PlayerController1 : MonoBehaviour
 {
     public Slider sliderUlti;
-    public PlayerController2 playerController;
+    public PlayerController2[] playerController;
     public GameObject[] animator;
     public Slider sliderHP;
     public GameManager manager;
@@ -19,7 +19,8 @@ public class PlayerController1 : MonoBehaviour
     public int damage;
     private bool Attack;
     public bool option;
-    public float compt;
+    public bool anim;
+    public bool move;
     private void Start()
     {
         StartCoroutine(PlayAnimation(animator[1], 1f));
@@ -57,9 +58,13 @@ public class PlayerController1 : MonoBehaviour
         if (option == false)
         {
             transform.Translate(movement * speed * Time.deltaTime);
-            if (moveHorizontal > 0.0f || moveHorizontal < 0.0f)
+            if (moveHorizontal > 0.0f || moveHorizontal < 0.0f && anim == false)
             {
+                move = true;
                 StartCoroutine(PlayAnimation(animator[2], 1f));
+            } else if (moveHorizontal == 0.0f)
+            {
+                move = false;
             }
         }
         if (manager.inFight)
@@ -68,17 +73,24 @@ public class PlayerController1 : MonoBehaviour
         }
         if (Input.GetButtonDown("Fire1." + joystickNumber) && AttackTimer >= AttackCooldown && Attack == true && option == false)
         {
-            playerController.health -= damage;
+            StartCoroutine(PlayAnimation(animator[3], 1f));
+            foreach (var player in playerController)
+            {
+                player.health -= damage;
+            }
             UltiXp_Current += 5;
         }
-        if (Input.GetButtonDown("Fire3." + joystickNumber) && option == false)
+        if (Input.GetButtonDown("Fire3." + joystickNumber) && option == false && move == false && anim == false)
         {
             StartCoroutine(PlayAnimation(animator[1], 1f));
             UltiXp_Current += 10;
         }
-        if (Input.GetButtonDown("LB" + joystickNumber) && UltiXp_Current >= UltiXp_Need && option == false)
+        if (Input.GetButtonDown("LB" + joystickNumber) && UltiXp_Current >= UltiXp_Need && option == false && move == false && anim == false)
         {
-            playerController.health -= damage * 2;
+            foreach (var player in playerController)
+            {
+                player.health -= damage * 2;
+            }
             UltiXp_Current = 0;
         }
         if (health <= 0)
@@ -89,11 +101,13 @@ public class PlayerController1 : MonoBehaviour
     }
     IEnumerator PlayAnimation(GameObject animation, float delay)
     {
+        anim = true;
         animator[0].SetActive(false);
         animation.SetActive(true);
         yield return new WaitForSeconds(delay);
         animation.SetActive(false);
         animator[0].SetActive(true);
+        anim = false;
     }
     public void SetValueUlti(int value)
     {

@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/ENZO/Arno.unity
+    guid: e44c6048ea705bc43af92c458a2a6d54
   m_configObjects: {}
