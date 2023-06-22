@@ -1,6 +1,5 @@
 using UnityEngine.UI;
 using UnityEngine;
-using Unity.Android.Types;
 
 public class PlayerController2 : MonoBehaviour
 {
