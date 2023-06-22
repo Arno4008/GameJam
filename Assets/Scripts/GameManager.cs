@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -9,6 +10,7 @@ public class GameManager : MonoBehaviour
     public bool inFight;
     public GameObject Fight;
     public GameObject Option;
+    public GameObject MainMenu;
     public GameObject UI;
     public GameObject CharacterSelection;
     string[] joystickNames;
@@ -32,6 +34,9 @@ public class GameManager : MonoBehaviour
         }
         Fight.SetActive(false);
         UI.SetActive(false);
+        MainMenu.SetActive(true);
+        Option.SetActive(false);
+        player1.MainMenu = true;
     }
     private void Update()
     {
@@ -48,7 +53,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Victoire du Joueur 1");
         }
     }
-    public void StartFight(int i)
+    public void StartFight(int selectedCharacter, int i)
     {
         b += i;
         if (b >= joystickNames.Length)
@@ -57,6 +62,23 @@ public class GameManager : MonoBehaviour
             Fight.SetActive(true);
             UI.SetActive(true);
             inFight = true;
+        }
+    }
+    public void ChangeMenu(int i)
+    {
+        if (i == 0)
+        {
+            MainMenu.SetActive(false);
+            CharacterSelection.SetActive(true);
+        }
+        if (i == 1)
+        {
+            MainMenu.SetActive(false);
+            Option.SetActive(true);
+        }
+        if (i == 2)
+        {
+            Debug.Log("Quit");
         }
     }
 }
