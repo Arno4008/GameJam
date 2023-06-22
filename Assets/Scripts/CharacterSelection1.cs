@@ -15,8 +15,11 @@ public class CharacterSelection1 : MonoBehaviour
     public GameObject[] MainMenuButtonSelected;
     public GameObject InvisibleWalls;
     public PlayerController1 player1;
+    public PlayerController1 player11;
     public PlayerController2 player2;
+    public PlayerController2 player22;
     public int selectedCharacter = 0;
+    public bool SelectedCharacter;
     public int SelectMainMenu = 0;
     public int SelectMainMenuButton = 0;
     public int selectedCharacterBack = 0;
@@ -114,6 +117,7 @@ public class CharacterSelection1 : MonoBehaviour
         if (horizontalInput == 0)
         {
             isAxisInUse = false;
+            player1.ResetAnimation();
         }
         if (!BRefresh)
         {
@@ -156,11 +160,11 @@ public class CharacterSelection1 : MonoBehaviour
                 }
             }
         }
-        if (Input.GetButtonDown("Fire1." + joystickNumber) && option == false && MainMenu == false)
+        if (Input.GetButtonDown("Fire1." + joystickNumber) && option == false && MainMenu == false && manager.inFight == false)
         {
-            manager.StartFight(selectedCharacter, i);
+            manager.StartFight(selectedCharacter, 0, 1);
         }
-        if (Input.GetButtonDown("Fire1." + joystickNumber) && MainMenu == true)
+        if (Input.GetButtonDown("Fire1." + joystickNumber) && MainMenu == true && manager.inFight == false)
         {
             if (SelectMainMenu == 0 && MainMenu == true)
             {
@@ -175,10 +179,14 @@ public class CharacterSelection1 : MonoBehaviour
             }
             if (SelectMainMenu == 2 && MainMenu == true)
             {
-                manager.ChangeMenu(2);
+                if (SelectedCharacter == false)
+                {
+                    SelectedCharacter = true;
+                    manager.ChangeMenu(2);
+                }
             }
         }
-        if (Input.GetButtonDown("Fire2") && option == true)
+        if (Input.GetButtonDown("Fire2") && option == true && manager.inFight == false)
         {
             manager.Option.SetActive(false);
             manager.MainMenu.SetActive(true);
@@ -187,11 +195,11 @@ public class CharacterSelection1 : MonoBehaviour
         }
         if (Input.GetButtonDown("Fire2") && option == false && MainMenu == false && manager.inFight == false)
         {
-            manager.Fight.SetActive(false);
+            manager.CharacterSelection.SetActive(false);
             manager.MainMenu.SetActive(true);
             MainMenu = true;
         }
-        if (Input.GetButtonDown("Fire1." + joystickNumber) && option == true)
+        if (Input.GetButtonDown("Fire1." + joystickNumber) && option == true && manager.inFight == false)
         {
             if (SelectedOptionButtonS == 0 && Walls == true)
             {
@@ -238,7 +246,9 @@ public class CharacterSelection1 : MonoBehaviour
             }
         }
         player1.option = option;
+        player11.option = option;
         player2.option = option;
+        player22.option = option;
     }
     void Refresh()
     {

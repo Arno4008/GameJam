@@ -4,9 +4,15 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public CharacterSelection1 player1;
-    public PlayerController1 playercontroller1;
+    public PlayerController1 playercontrollerClovis1;
+    public PlayerController1 playercontrollerEnzo1;
     public CharacterSelection2 player2;
-    public PlayerController2 playercontroller2;
+    public PlayerController2 playercontrollerClovis2;
+    public PlayerController2 playercontrollerEnzo2;
+    public GameObject[] charactersJ1;
+    public GameObject[] charactersJ2;
+    public Vector3 position_J1;
+    public Vector3 position_J2;
     public bool inFight;
     public GameObject Fight;
     public GameObject Option;
@@ -23,13 +29,15 @@ public class GameManager : MonoBehaviour
 
         if (joystickNames.Length > 0)
         {
-            playercontroller1.joystickNumber = 1;
+            playercontrollerClovis1.joystickNumber = 1;
+            playercontrollerEnzo1.joystickNumber = 1;
             player1.joystickNumber = 1;
         }
 
         if (joystickNames.Length > 1)
         {
-            playercontroller2.joystickNumber = 2;
+            playercontrollerClovis2.joystickNumber = 2;
+            playercontrollerEnzo2.joystickNumber = 2;
             player2.joystickNumber = 2;
         }
         Fight.SetActive(false);
@@ -53,9 +61,34 @@ public class GameManager : MonoBehaviour
             Debug.Log("Victoire du Joueur 1");
         }
     }
-    public void StartFight(int selectedCharacter, int i)
+    public void StartFight(int selectedCharacter, int i, int compt)
     {
-        b += i;
+        b += compt;
+        if (i == 0)
+        {
+            for (int x = 0; x <= (charactersJ1.Length - 1); x++)
+            {
+                charactersJ1[x].SetActive(false);
+                if (x == selectedCharacter)
+                {
+                    charactersJ1[x].SetActive(true);
+                }
+            }
+        }
+        if (i == 1)
+        {
+            for (int x = 0; x <= (charactersJ2.Length - 1); x++)
+            {
+                if (x == selectedCharacter)
+                {
+                    charactersJ2[x].SetActive(false);
+                    if (x == selectedCharacter)
+                    {
+                        charactersJ2[x].SetActive(true);
+                    }
+                }
+            }
+        }
         if (b >= joystickNames.Length)
         {
             CharacterSelection.SetActive(false);
