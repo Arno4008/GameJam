@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class CharacterSelection2 : MonoBehaviour
 {
@@ -10,12 +11,12 @@ public class CharacterSelection2 : MonoBehaviour
     public int selectedCharacterBack = 0;
     public int SelectedSlots = 0;
     public int joystickNumber;
+    public bool SelectedCharacter;
     public GameManager manager;
     public bool isAxisInUse;
     public bool BRefresh;
     void Update()
     {
-        
         float horizontalInput = Input.GetAxis("Horizontal2");
         if (horizontalInput < 0)
         {
@@ -69,7 +70,12 @@ public class CharacterSelection2 : MonoBehaviour
         }
         if (Input.GetButtonDown("Fire1." + joystickNumber))
         {
-            manager.StartFight(1);
+            if (SelectedCharacter == false)
+            {
+                SelectedCharacter = true;
+                manager.StartFight(selectedCharacter, 1, 1);
+            }
+            
         }
     }
     void Refresh() 
