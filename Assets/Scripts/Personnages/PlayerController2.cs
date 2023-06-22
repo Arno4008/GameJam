@@ -1,6 +1,6 @@
 using UnityEngine.UI;
 using UnityEngine;
-using Unity.Android.Types;
+using System.Collections;
 
 public class PlayerController2 : MonoBehaviour
 {
@@ -59,17 +59,7 @@ public class PlayerController2 : MonoBehaviour
             transform.Translate(movement * speed * Time.deltaTime);
             if (moveHorizontal > 0.0f || moveHorizontal < 0.0f)
             {
-                compt = 0f;
-                for (int i = 0; i <= (animator.Length - 1); i++)
-                {
-                    animator[i].SetActive(false);
-                }
-                animator[2].SetActive(true);
-            }
-            else
-            {
-                animator[2].SetActive(false);
-                animator[0].SetActive(true);
+                StartCoroutine(PlayAnimation(animator[2], 1f));
             }
         }
         if (manager.inFight)
@@ -79,26 +69,16 @@ public class PlayerController2 : MonoBehaviour
         }
         if (Input.GetButtonDown("Fire1." + joystickNumber) && AttackTimer >= AttackCooldown && Attack == true && option == false)
         {
-            compt = 0f;
             playerController.health -= damage;
             UltiXp_Current += 5;
         }
-        if (Input.GetButtonDown("Fire3." + joystickNumber) && option == false && compt >= 1f)
+        if (Input.GetButtonDown("Fire3." + joystickNumber) && option == false)
         {
-            compt = 0f;
-            for (int i = 0; i <= (animator.Length - 1); i++)
-            {
-                animator[i].SetActive(false);
-                if (i == 1)
-                {
-                    animator[1].SetActive(true);
-                }
-            }
+            StartCoroutine(PlayAnimation(animator[1], 1f));
             UltiXp_Current += 10;
         }
         if (Input.GetButtonDown("LB" + joystickNumber) && UltiXp_Current >= UltiXp_Need && option == false)
         {
-            compt = 0f;
             playerController.health -= damage * 2;
             UltiXp_Current = 0;
         }
@@ -107,17 +87,13 @@ public class PlayerController2 : MonoBehaviour
             manager.End(2);
             Destroy(gameObject, 0.1f);
         }
-        if (compt == 1f)
-        {
-           ResetAnimation();
-        }
     }
-    public void ResetAnimation()
+    IEnumerator PlayAnimation(GameObject animation, float delay)
     {
-        for (int i = 0; i <= (animator.Length - 1); i++)
-        {
-            animator[i].SetActive(false);
-        }
+        animator[0].SetActive(false);
+        animation.SetActive(true);
+        yield return new WaitForSeconds(delay);
+        animation.SetActive(false);
         animator[0].SetActive(true);
     }
     public void SetValueUlti(int value)

@@ -117,7 +117,6 @@ public class CharacterSelection1 : MonoBehaviour
         if (horizontalInput == 0)
         {
             isAxisInUse = false;
-            player1.ResetAnimation();
         }
         if (!BRefresh)
         {
